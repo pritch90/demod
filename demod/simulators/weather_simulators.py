@@ -382,6 +382,7 @@ class CrestClimateSimulator(ClimateSimulator):
             daily_clearness.append(self.irradiance_sim.get_current_clearness())
             self.irradiance_sim.step()
 
+        daily_irradiance = [float(np.squeeze(x)) for x in daily_irradiance]
         # compute the daily temprature based on irradiance
         daily_temperature = self._step_day(
             np.array(daily_irradiance).reshape(-1),
